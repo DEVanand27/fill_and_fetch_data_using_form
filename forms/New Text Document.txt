@@ -1,0 +1,403 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+
+public class enterSEARCH {
+	
+		enterSEARCH()
+		{
+			JFrame jb=new JFrame();
+			JButton b1=new JButton("READ");
+			b1.setBounds(50, 50, 100, 20);
+			jb.add(b1);
+			JButton b2=new JButton("WRITE");
+			b2.setBounds(160, 50, 100, 20);
+			jb.add(b2);
+			
+			jb.setSize(500, 500);
+			jb.setLayout(null);
+			jb.setVisible(true);
+			b1.addActionListener(new ActionListener()
+					{
+				public void actionPerformed(ActionEvent e)
+				{
+					JFrame f=new JFrame("Students appliccation form for XI ADMISSION");
+					JLabel tf1=new JLabel();
+					tf1.setText("AUTO FILL APPLICATION FORM");
+					tf1.setBounds(10, 10, 250, 50);
+					f.add(tf1);
+					JLabel tf2=new JLabel();
+					tf2.setText("1.AADHAR NUMBER:");
+					tf2.setBounds(10, 50, 200, 50);
+					f.add(tf2);
+					JTextArea ta1=new JTextArea();
+					ta1.setBounds(210, 67, 200, 20);
+					f.add(ta1);
+					JLabel tf3=new JLabel();
+					tf3.setText("2.NAME( IN CAPITAL):");
+					tf3.setBounds(10, 80, 200, 50);
+					f.add(tf3);
+					JTextArea ta2=new JTextArea();
+					ta2.setBounds(210, 97, 200, 20);
+					f.add(ta2);
+					
+					JLabel tf6=new JLabel();
+					tf6.setText("3.RELIGION:");
+					tf6.setBounds(10, 110, 200, 50);
+					f.add(tf6);
+					JTextArea ta4=new JTextArea();
+					ta4.setBounds(210, 130, 200, 20);
+					f.add(ta4);
+					JLabel tf7=new JLabel();
+					tf7.setText("4.NATIONALITY:");
+					tf7.setBounds(10, 145, 200, 50);
+					f.add(tf7);
+					JTextArea ta5=new JTextArea();
+					ta5.setBounds(210, 160, 200, 20);
+					f.add(ta5);
+					JLabel tf8=new JLabel();
+					tf8.setText("5.MARKS OBTAINED IN 10th :");
+					tf8.setBounds(10, 175, 200, 50);
+					f.add(tf8);
+					JTextArea ta6=new JTextArea();
+					ta6.setBounds(210, 190, 200, 20);
+					f.add(ta6);
+					JLabel tf9=new JLabel();
+					tf9.setText("6.GROUP PREFERRED FOR XIth:");
+					tf9.setBounds(10, 210, 200, 50);
+					f.add(tf9);
+					JRadioButton r1=new JRadioButton("BIO-MATHS");    
+					JRadioButton r2=new JRadioButton("COMPUTER SCIENCE");   
+					JRadioButton r3=new JRadioButton("PURE SCIENCE");    
+					JRadioButton r4=new JRadioButton("COMASS");   
+					r1.setBounds(215,210,120,50);    
+					r2.setBounds(350,210,180,50);  
+					r3.setBounds(550,210,150,50);    
+					r4.setBounds(700,210,180,50);
+					ButtonGroup bg=new ButtonGroup();    
+					bg.add(r1);
+					bg.add(r2);    
+					bg.add(r3);
+					bg.add(r4);
+					f.add(r1);
+					f.add(r2);  
+					f.add(r3);
+					f.add(r4);
+					JLabel tf10=new JLabel();
+					tf10.setText("7.FATHER NAME(IN CAPITAL):");
+					tf10.setBounds(10, 250, 200, 50);
+					f.add(tf10);
+					JTextArea ta7=new JTextArea();
+					ta7.setBounds(210, 265, 200, 20);
+					f.add(ta7);
+					JLabel tf11=new JLabel();
+					tf11.setText("8.CONTACT NO:");
+					tf11.setBounds(10, 280, 200, 50);
+					f.add(tf11);
+					JTextArea ta8=new JTextArea();
+					ta8.setBounds(210, 295, 200, 20);
+					f.add(ta8);
+					JLabel tf12=new JLabel();
+					tf12.setText("9.ADDRESS:");
+					tf12.setBounds(10, 320, 200, 50);
+					f.add(tf12);
+					JTextArea ta9=new JTextArea();
+					ta9.setBounds(210, 325, 400, 80);
+					f.add(ta9);
+					JLabel tf13=new JLabel();
+					tf13.setText("10.EMAIL ID:");
+					tf13.setBounds(10, 405, 200, 50);
+					f.add(tf13);
+					JTextArea ta10=new JTextArea();
+					ta10.setBounds(210, 420, 400, 20);
+					f.add(ta10);
+					JButton JB=new JButton("CLICK HERE TO FILL IN THE DETAILS");
+					JB.setBounds(300, 30, 300, 20);
+					f.add(JB);
+					
+					JB.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent e)
+						{
+							String str;
+							JFrame frame = new JFrame("OPENER");
+			                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+			                 frame.setSize(560, 200);      
+			                 frame.setLocationRelativeTo(null);  
+			                 frame.setVisible(true);            	 
+			                 str = (String)JOptionPane.showInputDialog(
+			                   frame,
+			                   "ENTER AADHAR ID", 
+			                   "AADHAR ID",            
+			                   JOptionPane.PLAIN_MESSAGE,
+			                   null,            
+			                   null, 
+			                   null
+			                );
+			                
+							//String str=ta14.getText();
+							int r=0;
+							
+							try
+							{
+								FileReader fw=new FileReader("C:\\Users\\R.DEVANAND\\OneDrive\\Desktop\\app form\\"+str+".txt");
+								Scanner c=new Scanner(fw);
+								String []item=new String[100];
+								
+								for (int i=0;c.hasNext();i++)
+								{
+									item[i]=c.nextLine();
+									
+									
+									if(i==0)
+									{
+										ta1.setText(item[i]);
+									}
+									if(i==1)
+									{
+										ta2.setText(item[i]);
+									}
+									if(i==2)
+									{
+										ta4.setText(item[i]);
+									}
+									if(i==3)
+									{
+										ta5.setText(item[i]);
+									}
+									if(i==4)
+									{
+										ta6.setText(item[i]);
+									}
+									if(i==5)
+									{
+										ta7.setText(item[i]);
+									}
+									if(i==6)
+									{
+										ta8.setText(item[i]);
+									}
+									if(i==7)
+									{
+										ta9.setText(item[i]);
+									}
+									if(i==8)
+									{
+										ta10.setText(item[i]);
+									}
+									
+								}
+								
+							fw.close();
+							
+							}
+							catch(Exception E)
+					    		{
+					    			System.out.println("error:"+E.getMessage());
+					    		}
+							 frame.setVisible(false);
+						}
+						
+					});
+					f.setSize(900, 1000);
+					f.setLayout(null);
+					f.setVisible(true);
+					
+					
+				}
+				
+					});		
+			b2.addActionListener(new ActionListener()
+					{
+				public void actionPerformed(ActionEvent e)
+				{
+					JFrame f=new JFrame("Students appliccation form for XI ADMISSION");
+					JLabel tf1=new JLabel();
+					tf1.setText("Here You Go ! ");
+					tf1.setBounds(10, 10, 110, 50);
+					f.add(tf1);
+					JLabel tf2=new JLabel();
+					tf2.setText("1.AADHAR NUMBER:");
+					tf2.setBounds(10, 50, 200, 50);
+					f.add(tf2);
+					JTextArea ta1=new JTextArea();
+					ta1.setBounds(210, 67, 200, 20);
+					f.add(ta1);
+					JLabel tf3=new JLabel();
+					tf3.setText("2.NAME( IN CAPITAL):");
+					tf3.setBounds(10, 80, 200, 50);
+					f.add(tf3);
+					JTextArea ta2=new JTextArea();
+					ta2.setBounds(210, 97, 200, 20);
+					f.add(ta2);
+					
+					JLabel tf6=new JLabel();
+					tf6.setText("3.RELIGION:");
+					tf6.setBounds(10, 110, 200, 50);
+					f.add(tf6);
+					JTextArea ta4=new JTextArea();
+					ta4.setBounds(210, 130, 200, 20);
+					f.add(ta4);
+					JLabel tf7=new JLabel();
+					tf7.setText("4.NATIONALITY:");
+					tf7.setBounds(10, 145, 200, 50);
+					f.add(tf7);
+					JTextArea ta5=new JTextArea();
+					ta5.setBounds(210, 160, 200, 20);
+					f.add(ta5);
+					JLabel tf8=new JLabel();
+					tf8.setText("5.MARKS OBTAINED IN 10th :");
+					tf8.setBounds(10, 175, 200, 50);
+					f.add(tf8);
+					JTextArea ta6=new JTextArea();
+					ta6.setBounds(210, 190, 200, 20);
+					f.add(ta6);
+					JLabel tf9=new JLabel();
+					tf9.setText("6.GROUP PREFERRED FOR XIth:");
+					tf9.setBounds(10, 210, 200, 50);
+					f.add(tf9);
+					JRadioButton r1=new JRadioButton("BIO-MATHS");    
+					JRadioButton r2=new JRadioButton("COMPUTER SCIENCE");   
+					JRadioButton r3=new JRadioButton("PURE SCIENCE");    
+					JRadioButton r4=new JRadioButton("COMASS");   
+					r1.setBounds(215,210,120,50);    
+					r2.setBounds(350,210,180,50);  
+					r3.setBounds(550,210,150,50);    
+					r4.setBounds(700,210,180,50);
+					ButtonGroup bg=new ButtonGroup();    
+					bg.add(r1);
+					bg.add(r2);    
+					bg.add(r3);
+					bg.add(r4);
+					f.add(r1);
+					f.add(r2);  
+					f.add(r3);
+					f.add(r4);
+					JLabel tf10=new JLabel();
+					tf10.setText("7.FATHER NAME(IN CAPITAL):");
+					tf10.setBounds(10, 250, 200, 50);
+					f.add(tf10);
+					JTextArea ta7=new JTextArea();
+					ta7.setBounds(210, 265, 200, 20);
+					f.add(ta7);
+					JLabel tf11=new JLabel();
+					tf11.setText("8.CONTACT NO:");
+					tf11.setBounds(10, 280, 200, 50);
+					f.add(tf11);
+					JTextArea ta8=new JTextArea();
+					ta8.setBounds(210, 295, 200, 20);
+					f.add(ta8);
+					JLabel tf12=new JLabel();
+					tf12.setText("9.ADDRESS:");
+					tf12.setBounds(10, 320, 200, 50);
+					f.add(tf12);
+					JTextArea ta9=new JTextArea();
+					ta9.setBounds(210, 325, 400, 80);
+					f.add(ta9);
+					JLabel tf13=new JLabel();
+					tf13.setText("10.EMAIL ID:");
+					tf13.setBounds(10, 405, 200, 50);
+					f.add(tf13);
+					JTextArea ta10=new JTextArea();
+					ta10.setBounds(210, 420, 400, 20);
+					f.add(ta10);
+					JButton JB=new JButton("ENTER");
+					JB.setBounds(220, 570, 150, 50);
+					f.add(JB);
+					
+					JB.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent e)
+						{
+							
+							String str=ta1.getText();
+						//	String s1;
+							int r=0;
+							
+							
+							
+						
+							try
+							{
+								
+								FileWriter fw=new FileWriter("C:\\Users\\R.DEVANAND\\OneDrive\\Desktop\\app form\\"+str+".txt");
+							fw.write(ta1.getText()+"\n");
+							fw.write(ta2.getText()+"\n");
+							fw.write(ta4.getText()+"\n");
+							fw.write(ta5.getText()+"\n");
+							fw.write(ta6.getText()+"\n");
+							if(r1.isSelected())
+							{
+								fw.write("BIO-MATHS"+"\n");
+							}
+							if(r2.isSelected())
+							{
+								fw.write("COMPUTER SCIENCE"+"\n");
+							}
+							if(r3.isSelected())
+							{
+								fw.write("PURE SCIENCE"+"\n");
+							}
+							if(r4.isSelected())
+							{
+								fw.write("COMASS"+"\n");
+							}
+							fw.write(ta7.getText()+"\n");
+							fw.write(ta8.getText()+"\n");
+							fw.write(ta9.getText()+"\n");
+							fw.write(ta10.getText()+"\n");
+							
+							
+							fw.close();
+							System.exit(1);
+							}
+							catch(Exception E)
+					    		{
+					    			System.out.println("error:"+E.getMessage());
+					    		}
+						}
+						
+					});
+					
+					
+					
+					
+					
+					
+					
+					
+					f.setSize(900, 1000);
+					f.setLayout(null);
+					f.setVisible(true);
+					
+					
+					
+					
+					
+					
+				}
+					});
+			
+			
+			
+		}
+	
+	public static void main(String []args) 
+	{
+		new enterSEARCH();
+		
+		
+	}
+
+}
